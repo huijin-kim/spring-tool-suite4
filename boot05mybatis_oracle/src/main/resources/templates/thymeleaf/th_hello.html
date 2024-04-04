@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>thymeleaf</title>
+
+	<link href="/css/main.css" rel="stylesheet">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+</head>
+
+<body>
+	<!-- 	thymeleaf폴더명/th_top_menu확장자뺀파일명 :: test_top_menu조각명 -->
+	<div th:insert="thymeleaf/th_top_menu :: test_top_menu"></div>
+	
+	<h3>타임리프 템플릿 top_menu - insert는 현재 태그(div)를 유지하면서 템플릿 조각(test_top_menu)을 가져오는 방법</h3>
+	<h3>타임리프 템플릿 부가 설명은 하단에 푸터에서 확인할것.</h3>
+
+
+	<hr>
+	<h3>Model 받기( ${} or *{} 모두사용가능)</h3>
+	<p>
+		<span>[[${to_day}]]</span><br>
+		<span>[[*{to_day}]]</span><br>
+		<span th:text="${to_day}">thymeleaf안될때 기본값</span><br>
+	</p>
+	
+	<p>
+		<span>[[${#dates}]]</span><br>
+		<span>[[${#dates.format(to_day)}]]</span>
+	</p>
+	<p>
+		<span>[[${#dates.format(to_day, 'yyyy/MM/dd/ HH:mm:ss')}]]</span>
+	</p>
+	
+	<hr>
+	<h3>th:obejct</h3>
+		<span>[[${vo.num}]]</span>
+		<span>[[${vo.id}]]</span><br>
+	<div th:obejct="${vo}">
+		<span th:text="${vo.num}">num</span>
+		<span th:text="${vo.id}">id</span><br>
+	</div>
+	
+	<hr>
+	<h3>변수할당</h3>
+	<ul th:with="kor=100, eng=99, math=88, name=kim">
+		<li><span>[[${kor}]]</span></li>
+		<li><span>[[${eng}]]</span></li>
+		<li><span>[[${math}]]</span></li>
+		<li><span>[[${name}]]</span></li>
+	</ul>
+	
+	<hr>
+	<h3>th:href |...| :  + 혹은 () 등으로 이어줘야 하는 것을 대신해서 | | 사이는 정보는 전부 문자열로 처리</h3>
+	
+<!-- 	 |...| :  + 혹은 () 등으로 이어줘야 하는 것을 대신해서 | | 사이는 정보는 전부 문자열로 처리 -->
+	<ul>
+		<li><a th:href="@{m_selectOne?num=}+${vo.num}"><span>[[${vo.num}]] 불편 ㅜㅜ</span></a></li>
+		<li><a th:href="@{m_selectOne(num=${vo.num})}"><span>[[${vo.num}]] 가독성 ㅜㅜ</span></a></li>
+		<li><a th:href="@{m_searchList(num=${vo.num},searchKey=id,searchWord=ki)}"><span>파라미터가 여러개일때는 이렇게처리해야함^^</span></a></li>
+		<li><a th:href="|m_selectOne?num=${vo.num}|"><span>[[${vo.num}]] 아주좋아</span></a></li>
+	</ul>
+	
+	<hr>
+	<h3>Math.random()</h3>
+	<ul th:with="avg=99.99">
+		<li th:with="random_su=${T(java.lang.Math).random()}"><span>[[${random_su}]]</span></li>
+		<li th:with="random_su=${T(java.lang.Math).random()*10}"><span>[[${random_su}]]</span></li>
+		<li th:with="int_su=${T(java.lang.Math).floor(3.14)}"><span>[[${int_su}]]</span></li>
+		<li th:with="int_su=${T(java.lang.Math).floor(avg)}"><span>[[${int_su}]]</span></li>
+		<!-- 지역변수의 스코프는 선언된 해당 태그까지만이다 -->
+		<li th:with="random_su=${T(java.lang.Math).random()*10}">
+			<span th:with="int_su=${random_su}">[[${int_su}]]</span>
+		</li>
+	</ul>
+	
+	<hr>
+	<h3>반복문 th:each</h3>
+	<ul>
+		<th:block th:each="num : ${#numbers.sequence(1,5)}">
+			<li><span>[[${num}]]</span></li>
+		</th:block>
+	</ul>
+	
+	<hr>
+	<h3>분기문 th:if</h3>
+	<ul>
+		<th:block th:each="num : ${#numbers.sequence(1,5)}">
+			<li th:if="${num}%2==0"><span>[[${num}]]</span></li>
+		</th:block>
+	</ul>
+	
+	<hr>
+	<h3>타임리프 템플릿 footer  - insert는 현재 태그(div)를 유지하면서 템플릿 조각(footer)을 가져오는 방법</h3>
+	<div th:insert="thymeleaf/th_footer :: test_copy"></div>
+	
+	<hr>
+	<h3>타임리프 템플릿 footer  - replace는 현재 태그(div)를 버리고 템플릿 조각(footer)으로 덮어쓰는 방법</h3>
+	<div th:replace="thymeleaf/th_footer :: test_copy"></div>
+	
+	<hr>
+	<h3>타임리프 템플릿 footer  - replace + 함수를 통해 파라메터 전달 가능.</h3>
+	<div th:replace="thymeleaf/th_footer :: test_copyParam('Multi_edu_20','010-0000-0000')">
+	
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>thymeleaf</title>
+
+	<link href="/css/main.css" rel="stylesheet">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+</head>
+
+<body>
+	<div class="container">
+		<a href="findAll" class="btn btn-success">findAll</a>
+		<a href="findAll?sort=-1&limit=10" class="btn btn-success">findAll sort:-1,limit:10</a>
+		<a href="findAllCount" class="btn btn-success">findAllCount</a>
+		
+		<a href="findAllPageLimit?page=1&limit=5" class="btn btn-success">1 findAllPageLimit</a>
+		<a href="findAllPageLimit?page=2&limit=5" class="btn btn-success">2 findAllPageLimit</a>
+
+		<hr>
+		<a href="searchList?searchKey=name&searchWord=nn" class="btn btn-success">searchList : name</a>
+		<a href="searchList?searchKey=phone&searchWord=33" class="btn btn-success">searchList : phone</a>
+		<hr>
+		
+		
+		<a href="searchListPageLimit?searchKey=name&searchWord=nn&page=1&limit=3" class="btn btn-success">searchListPageLimit : name</a>
+		<a href="searchListPageLimit?searchKey=phone&searchWord=33&page=1&limit=3" class="btn btn-success">searchListPageLimit : phone</a>
+		<hr>
+		
+		<a href="searchListAndOrIn?filter=gtlt&age1=3&age2=6" class="btn btn-success">searchListAndGtLt</a>
+		<a href="searchListAndOrIn?filter=gtelte&age1=3&age2=6" class="btn btn-success">searchListAndGteLte</a>
+		<a href="searchListAndOrIn?filter=orin&age1=3&age2=6" class="btn btn-success">searchListOrIn</a>
+		<hr>
+
+		<a href="findOne?age=1" class="btn btn-success">findOne</a>
+		<a href="findOne?mid=6397fa8388a6555310a4c6cc" class="btn btn-success">findOne : mid</a>
+
+		<hr>
+		<a href="insertOneOK?age=110&name=lee&office=multi&phone=02" class="btn btn-success">insertOneOK</a>
+		<a href="insertManyOK" class="btn btn-success">insertManyOK</a>
+		<hr>
+		<a href="updateOneOK?mid=65f92faa7b77b83ff86dcd68&age=110&name=lee11&office=multi11&phone=0211" class="btn btn-success">updateOK</a>
+		<a href="updateManyOK?age=101&name=aaa&office=bbb&phone=ccc" class="btn btn-success">updateManyOK 101이상 모두수정</a>
+		<hr>
+		<a href="deleteOneOK?age=110" class="btn btn-success">deleteOK</a>
+		<a href="deleteOneOK?mid=65f932027b77b83ff86dcd70" class="btn btn-success">deleteOK</a>
+		<a href="deleteManyOK?age=101" class="btn btn-success">deleteManyOK 101이상 모두삭제</a>
+	</div>
+</body>
+
+</html>

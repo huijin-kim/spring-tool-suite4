@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>thymeleaf</title>
+
+	<link href="/css/main.css" rel="stylesheet">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+</head>
+
+<body>
+	<div class="container">
+		<a href="findAll">findAll</a>
+		<a href="findAll2?page=1&limit=3">1 findAll : skip , limit</a>
+		<a href="findAll2?page=2&limit=3">2 findAll : skip , limit</a>
+
+		<hr>
+		<a href="searchList?searchKey=name&searchWord=nn">searchList : name</a>
+		<a href="searchList?searchKey=phone&searchWord=33">searchList : phone</a>
+		<a href="searchList2?age1=3&age2=6">searchList2 : Filters.and</a>
+		<a href="searchList3?age1=3&age2=6">searchList3 : Filters.or,in</a>
+		<hr>
+
+		<a href="findOne?age=1">findOne</a>
+		<a href="findOne?mid=6397fa8388a6555310a4c6cc">findOne : mid</a>
+
+		<hr>
+		<a href="insertOneOK?age=110&name=lee&office=multi&phone=02">insertOneOK</a>
+		<a href="insertManyOK">insertManyOK</a>
+		<hr>
+		<a href="updateOneOK?age=110&name=lee11&office=multi11&phone=0211">updateOK</a>
+		<a href="updateManyOK?age=101&name=aaa&office=bbb&phone=ccc">updateManyOK</a>
+		<hr>
+		<a href="deleteOneOK?age=110">deleteOK</a>
+		<a href="deleteManyOK?age=101">deleteManyOK</a>
+	</div>
+</body>
+
+</html>
